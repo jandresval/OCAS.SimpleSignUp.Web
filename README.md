@@ -14,7 +14,7 @@ Procedure:
 
 Improvements:
 - Separate Model and Data classes in a project.
-- Create a separate project for web api. Eventhough, web api on .net core has been improved and you are not longer needed a different 
+- Create a separate project for web api. However, web api on .net core has been improved and you are not longer needed a different 
 project.
 - Have logging and catch errors for troubleshotting in the future.
 - Use a stronger data storage.
