@@ -12,13 +12,13 @@ import { SignUp } from '../../signup'
 
 @Component({
     selector: 'signup',
+    styleUrls: ['signup.component.css'],
     templateUrl: './signup.component.html'
 })
 export class SignupComponent implements OnInit {
     activities: string[] = ['Gaming','Camping','Fishing'];
     public myform: FormGroup;
     private baseurl: string;
-    private signup1: SignUp = new SignUp(); 
 
     constructor(private http: Http,
         @Inject('BASE_URL') baseUrl: string,
@@ -28,10 +28,10 @@ export class SignupComponent implements OnInit {
 
     ngOnInit() {
         this.myform = new FormGroup({
-            firstName: new FormControl(this.signup1.FirstName, Validators.required),
+            firstName: new FormControl('', Validators.required),
             lastName: new FormControl('', Validators.required),
-            email: new FormControl(this.signup1.EmailAddress, [Validators.required, Validators.pattern("[^ @]*@[^ @]*")]),
-            activity: new FormControl(),
+            email: new FormControl('', [Validators.required, Validators.pattern("[^ @]*@[^ @]*")]),
+            activity: new FormControl('', Validators.required),
             comments: new FormControl('')
         });
     }
@@ -41,6 +41,8 @@ export class SignupComponent implements OnInit {
     get lastName() { return this.myform.get('lastName'); }
 
     get email() { return this.myform.get('email'); }
+
+    get activityValidation() { return this.myform.get('activity'); }
 
     Save() {
         if (!this.myform.invalid) {
