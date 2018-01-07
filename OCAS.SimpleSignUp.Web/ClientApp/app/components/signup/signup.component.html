@@ -1,0 +1,63 @@
+﻿<h1>Sign Up</h1>
+
+
+<form novalidate 
+      [formGroup]="myform">
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="firstName" required maxlength="150">
+            <div class="alert alert-danger" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                <strong>First Name cannot be empty!</strong>
+            </div>
+        </div>
+
+    <div class="form-group">
+        <label>Last Name</label>
+        <input type="text"
+               class="form-control"
+               formControlName="lastName" required maxlength="150">
+        <div class="alert alert-danger" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+            <strong>Last Name cannot be empty!</strong>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email"
+               class="form-control"
+               formControlName="email" required id="email" name="email" maxlength="250">
+        <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <strong>Wrong email format!</strong>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Activities</label>
+        <select class="form-control"
+                formControlName="activity">
+            <option value="">Please select an Activity</option>
+            <option *ngFor="let activity of activities"
+                    [value]="activity">
+                {{activity}}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Comments</label>
+        <input type="text"
+               class="form-control"
+               formControlName="comments" maxlength="1024">
+    </div>
+    <p>{{myform.email | json}}</p>
+   
+</form>
+
+<button (click)="Save()" class="btn-primary btn-info">
+    Save
+</button>
+<button [routerLink]="['/']" class="btn-primary">
+    Cancel
+</button>

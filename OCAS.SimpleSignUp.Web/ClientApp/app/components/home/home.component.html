@@ -1,0 +1,33 @@
+<h1>Acme Widget Company: SignUp</h1>
+
+
+
+<button [routerLink]="['/sign-up']" class="btn-primary">
+     Sign Up
+</button>
+<br/>
+<br />
+<p *ngIf="!signups && !errorMessage"><em>Loading...</em></p>
+<table class='table' *ngIf="signups">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Activity</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let signup of signups">
+            <td>{{ signup.firstName }}</td>
+            <td>{{ signup.lastName }}</td>
+            <td>{{ signup.emailAddress }}</td>
+            <td>{{ signup.activity }}</td>
+            <td>{{ signup.comments }}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="alert alert-danger" *ngIf="errorMessage">
+    <strong>Server error!</strong>
+</div>
